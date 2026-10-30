@@ -1,0 +1,13 @@
+const { getUserBookings } = require("../services/userService");
+
+const getUserBookingsHandler = async (req, res) => {
+  try {
+    const bookings = await getUserBookings(req.params.id);
+    return res.status(200).json(bookings);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { getUserBookings: getUserBookingsHandler };
+
